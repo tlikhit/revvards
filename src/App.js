@@ -1,16 +1,13 @@
 import React from 'react';
 import './App.css';
 import HorizStepper from './components/HorizStepper'
-import EmoOptions from './components/Options'
 import Question from './components/Question'
+import Options from './components/Options'
 
 function App() {
   return (
     <div className="App">
       <HorizStepper />
-      {/* <Question />
-      <EmoOptions /> */}
-
     </div>
   );
 }

@@ -28,26 +28,25 @@ const useStyles = {
 class EmoOptions extends React.Component{
     constructor(){
         super()
-        this.state = {clicked: [false, false, false], disappear: false, count:0}
+        this.state = {clicked: [false, false, false]}
     }
     sendData(){
         this.props.parentCallback()
     }
     handleClick(n){
         if (this.state.clicked[n]){
-            console.log("Disappearing")
-            this.setState({disappear:true})
+            // console.log("Disappearing")
             this.sendData()   
         }else{
             this.setState(state=> {
-                console.log("Changing state")
+                // console.log("Changing state")
                 let newState = [false, false, false]
                 newState[n] = true
-                return ({clicked: newState, count:0})
+                return ({clicked: newState})
             })
-            console.log("Array should be printed")
-            console.log(this.state.clicked)
-            console.log(this.state)
+            // console.log("Array should be printed")
+            // console.log(this.state.clicked)
+            // console.log(this.state)
         }}
         
     render(){
@@ -57,7 +56,7 @@ class EmoOptions extends React.Component{
                 justify="space-around"
                 alignItems="center"
                 height='100%'>
-                    <Question n={0}/>
+                    <Question n={1}/>
                     <Grid item xs={12}>
                         <ThumbUpOutlinedIcon onClick={()=>this.handleClick(0)} 
                         style={this.state.clicked[0] ? useStyles.active: useStyles.inactive} />
@@ -73,6 +72,5 @@ class EmoOptions extends React.Component{
                 </Grid>)        
     }
 }
-
 
 export default EmoOptions
