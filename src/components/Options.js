@@ -27,7 +27,36 @@ const useStyles = {
         padding: '2vw',
       }}
 
+function TapAgainBanner(props) {
+    const [open, setOpen] = React.useState(props.isOpen)
+    const handleClose = (event, reason) => {
+        if (reason === 'clickaway') {
+        return;
+        }
+        setOpen(false);
+    };
 
+    return (
+        <Snackbar
+            anchorOrigin={{
+            vertical: 'bottom',
+            horizontal: 'left',
+            }}
+            open= {open}
+            autoHideDuration={6000}
+            onClose={handleClose}
+            message="Tap again to confirm"
+            action={
+            <React.Fragment>
+                <IconButton size="small" aria-label="close" 
+                color="secondary" onClick={handleClose}>
+                <CloseIcon fontSize="small" />
+                </IconButton>
+            </React.Fragment>
+            }
+        />
+    );
+}
 class EmoOptions extends React.Component{
     constructor(){
         super()
@@ -72,24 +101,9 @@ class EmoOptions extends React.Component{
                         <ThumbDownAltRoundedIcon onClick={()=>this.handleClick(2)} 
                         style={this.state.clicked[2] ? useStyles.active: useStyles.inactive} />
                     </Grid> 
-                    <Snackbar
-                    anchorOrigin={{
-                        vertical:"bottom",
-                        horizontal:"left"
-                    }}
-                    open = {this.state.clicked.includes(true)}
-                    autoHideDuration = {6000}
-                    message = "Click again to confirm"
-                    action = {
-                        <React.Fragment>
-                            <IconButton
-                            size = "small"
-                            aria-label = "close"
-                            color = "inherit">
-                            <CloseIcon fontSize="small" />
-                            </IconButton>
-                        </React.Fragment>
-                    }/>                                 
+                    {this.state.clicked.includes(true) &&
+                    <TapAgainBanner 
+                    isOpen={this.state.clicked.includes(true)}/>}                          
                 </Grid>) 
     
     }

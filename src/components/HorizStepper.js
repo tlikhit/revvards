@@ -30,16 +30,11 @@ const stepperStyles = makeStyles(theme => ({
   active: {
     backgroundColor: 'black',
     color: 'white',
-    // backgroundImage:
-    //   'linear-gradient( 136deg, rgb(242,113,33) 0%, rgb(233,64,87) 50%, rgb(138,35,135) 100%)',
     boxShadow: '0 4px 10px 0 rgba(0,0,0,.25)',
   },
   completed: {
     backgroundColor: 'black',
     boxShadow: '0',
-    // color: 'white'
-  //   backgroundImage:
-  //     'linear-gradient( 136deg, rgb(242,113,33) 0%, rgb(233,64,87) 50%, rgb(138,35,135) 100%)',
   },
   }))
 
