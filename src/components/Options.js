@@ -15,13 +15,14 @@ import Question from './Question';
 const useStyles = {
     inactive: {
         fontSize: '15vh',
-        marginBottom: '2vh',
-        color:'purple'
+        margin: '2vh',
+        color:'#3F51B5'
     },
     active: {
         fontSize: '15vh',
-        marginBottom: '2vh',
-        color:'red'
+        margin: '2vh',
+        color:'#4055b3',
+        transform: 'scale(1.2)',//'#7C4DFF'
       }}
 
 

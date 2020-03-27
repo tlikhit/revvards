@@ -32,15 +32,15 @@ import ShoppingCartRoundedIcon from '@material-ui/icons/ShoppingCartRounded';
 
 const useStyles = {
     inactive: {
-        color:'purple',
+        color:'#3F51B5',
         margin: '10%',
         padding: 0,
     },
     active: {
-        color:'red',
+        color:'white',
         margin:'10%',
         padding: 0,
-
+        background: '#3F51B5'
       },
     root: {
         minWidth: 275,

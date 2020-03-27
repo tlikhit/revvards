@@ -6,19 +6,17 @@ import StepLabel from '@material-ui/core/StepLabel';
 import Typography from '@material-ui/core/Typography';
 import EmoOptions from './Options';
 import ReviewModes from './ReviewModes'
+import { createMuiTheme } from '@material-ui/core/styles';
+import MuiThemeProvider from '@material-ui/core/styles/MuiThemeProvider';
+
 
 const useStyles = makeStyles(theme => ({
   root: {
     width: '100%',
-  },
-  backButton: {
-    marginRight: theme.spacing(1),
-  },
-  instructions: {
-    marginTop: theme.spacing(1),
-    marginBottom: theme.spacing(1),
+    backgroundColor: 'transparent',
   },
 }));
+
 
 
 function HorizStepper() {
@@ -50,13 +48,15 @@ function HorizStepper() {
   }
   return (
     <div className={classes.root}>
-      <Stepper activeStep={activeStep}>
+      {/* /]<MuiThemeProvider muiTheme={muiTheme}> */}
+      <Stepper style={classes.stepper} activeStep={activeStep}>
         {steps.map(label => (
           <Step key={label}>
             <StepLabel></StepLabel>
           </Step>
         ))}
       </Stepper>
+      {/* </MuiThemeProvider> */}
       <div>
         {activeStep === steps.length ? (
           <div>
