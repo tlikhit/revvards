@@ -1,28 +1,30 @@
 import React from 'react'
-import ThumbUpOutlinedIcon from '@material-ui/icons/ThumbUpOutlined';
-import ThumbDownOutlinedIcon from '@material-ui/icons/ThumbDownOutlined'
-import FaceOutlinedIcon from '@material-ui/icons/FaceOutlined';
-import FaceIcon from '@material-ui/icons/Face';
-import {Grid, Paper} from '@material-ui/core'
-import { makeStyles } from '@material-ui/core/styles';
-import { sizing } from '@material-ui/system';
-import Badge from '@material-ui/core/Badge';
-import { withStyles } from '@material-ui/core/styles';
-import IconButton from '@material-ui/core/IconButton';
 import '../App.css'
 import Question from './Question';
+import ThumbUpAltRoundedIcon from '@material-ui/icons/ThumbUpAltRounded';
+import ThumbDownAltRoundedIcon from '@material-ui/icons/ThumbDownAltRounded';
+import FaceRoundedIcon from '@material-ui/icons/FaceRounded';
+import {Grid} from '@material-ui/core'
+import Snackbar from "@material-ui/core/Snackbar";
+import IconButton from "@material-ui/core/IconButton";
+import CloseIcon from "@material-ui/icons/Close";
 
 const useStyles = {
     inactive: {
-        fontSize: '15vh',
+        fontSize: '13vh',
         margin: '2vh',
-        color:'#3F51B5'
+        padding:'1vw',
+        border: '5px solid black',
+        boxShadow: '3px 4px',
+        borderRadius: '10px',
     },
     active: {
         fontSize: '15vh',
         margin: '2vh',
-        color:'#4055b3',
-        transform: 'scale(1.2)',//'#7C4DFF'
+        border: '5px solid black',
+        boxShadow: '-5px -5px',
+        borderRadius: '90%',
+        padding: '2vw',
       }}
 
 
@@ -59,18 +61,37 @@ class EmoOptions extends React.Component{
                 height='100%'>
                     <Question n={1}/>
                     <Grid item xs={12}>
-                        <ThumbUpOutlinedIcon onClick={()=>this.handleClick(0)} 
+                        <ThumbUpAltRoundedIcon onClick={()=>this.handleClick(0)} 
                         style={this.state.clicked[0] ? useStyles.active: useStyles.inactive} />
                     </Grid>
                     <Grid item xs={12}>
-                        <FaceOutlinedIcon onClick={()=>this.handleClick(1)} 
+                        <FaceRoundedIcon onClick={()=>this.handleClick(1)} 
                         style={this.state.clicked[1] ? useStyles.active: useStyles.inactive} />
                     </Grid>
                     <Grid item xs={12}>
-                        <ThumbDownOutlinedIcon onClick={()=>this.handleClick(2)} 
+                        <ThumbDownAltRoundedIcon onClick={()=>this.handleClick(2)} 
                         style={this.state.clicked[2] ? useStyles.active: useStyles.inactive} />
-                    </Grid>                                
-                </Grid>)        
+                    </Grid> 
+                    <Snackbar
+                    anchorOrigin={{
+                        vertical:"bottom",
+                        horizontal:"left"
+                    }}
+                    open = {this.state.clicked.includes(true)}
+                    autoHideDuration = {6000}
+                    message = "Click again to confirm"
+                    action = {
+                        <React.Fragment>
+                            <IconButton
+                            size = "small"
+                            aria-label = "close"
+                            color = "inherit">
+                            <CloseIcon fontSize="small" />
+                            </IconButton>
+                        </React.Fragment>
+                    }/>                                 
+                </Grid>) 
+    
     }
 }
 

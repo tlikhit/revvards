@@ -1,67 +1,70 @@
 import React from 'react'
-import ThumbUpOutlinedIcon from '@material-ui/icons/ThumbUpOutlined';
-import ThumbDownOutlinedIcon from '@material-ui/icons/ThumbDownOutlined'
-import FaceOutlinedIcon from '@material-ui/icons/FaceOutlined';
-import FaceIcon from '@material-ui/icons/Face';
-import {Grid, Paper} from '@material-ui/core'
-import { makeStyles } from '@material-ui/core/styles';
-import { sizing } from '@material-ui/system';
-import Badge from '@material-ui/core/Badge';
-import { withStyles } from '@material-ui/core/styles';
-import IconButton from '@material-ui/core/IconButton';
 import '../App.css'
 import Card from '@material-ui/core/Card';
-import CardActions from '@material-ui/core/CardActions';
+import Container from '@material-ui/core/Container';
 import CardContent from '@material-ui/core/CardContent';
-import Typography from '@material-ui/core/Typography';
 import Question from './Question';
 import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
-import ListItemAvatar from '@material-ui/core/ListItemAvatar';
-import Avatar from '@material-ui/core/Avatar';
-import ImageIcon from '@material-ui/icons/Image';
-import WorkIcon from '@material-ui/icons/Work';
-import BeachAccessIcon from '@material-ui/icons/BeachAccess';
-import Divider from '@material-ui/core/Divider';
 import VideoCallIcon from '@material-ui/icons/VideoCall';
 import PhotoCameraSharpIcon from '@material-ui/icons/PhotoCameraSharp';
 import CheckCircleSharpIcon from '@material-ui/icons/CheckCircleSharp';
-import AddShoppingCartIcon from '@material-ui/icons/AddShoppingCart';
 import ShoppingCartRoundedIcon from '@material-ui/icons/ShoppingCartRounded';
 
 const useStyles = {
+    root: {
+    },
     inactive: {
-        color:'#3F51B5',
-        margin: '10%',
-        padding: 0,
+        margin: '2vh 10%',
+        padding: '0',
+        border: '5px solid black',
+        borderRadius: '10px',
+        width: '80%'
     },
     active: {
-        color:'white',
-        margin:'10%',
-        padding: 0,
-        background: '#3F51B5'
+        margin: '2vh 10%',
+        padding: '0',
+        border: '5px solid white',
+        borderRadius: '10px',
+        width: '80%',
+        color: 'white',
+        backgroundColor: 'black'
       },
-    root: {
-        minWidth: 275,
-    },
-    title: {
-        fontSize: 14,
-    },
-    pos: {
-        marginBottom: 12,
-    },
     video: {
-        fontSize: '10vh',
-        marginLeft: '40%'
+        fontSize: '8vh',
+        margin: '0',
+        marginLeft:'40%',
+    },
+    pos:{
+        margin:'0',
+        padding: '0',
+        marginLeft:'36%'
     },
     camera:{
-        fontSize: '10vh',
+        margin: '0',
+        fontSize: '8vh',
         marginLeft:'40%'
     },
+    pos1: {
+        marginLeft: '27%'
+    },
     checkmarks:{
-        marginRight: 4
+        marginLeft:'0',
+        marginRight: '10%'
+    },
+    listItem:{
+        margin: '0',
+        padding: '0',
+        width: '100%',
+    },
+    grid:{
+        // height: '100%',
+    },
+    divider:{
+        color: 'black',
     }
+
     }
 
 class ReviewModes extends React.Component{
@@ -97,13 +100,17 @@ class ReviewModes extends React.Component{
             variant="outlined">
                 <CardContent>
                     <VideoCallIcon style={classes.video}/>
-                    <Divider variant="inset"/>
+                    <div style = {classes.pos}>
+                    by Video
+                    </div>
+                    <hr style = {classes.divider}/>
                     <List style={classes.root}>
-                        <ListItem>
+                        <ListItem style={classes.listItem}>
                             <CheckCircleSharpIcon style={classes.checkmarks}/>
-                            <ListItemText primary="Get a 10% discount on Cheerble"/>
+                            <ListItemText 
+                            primary="Get a 10% discount on Cheerble" />
                         </ListItem>
-                        <ListItem>
+                        <ListItem style={classes.listItem}>
                             <ShoppingCartRoundedIcon style={classes.checkmarks}/>
                             <ListItemText 
                             primary="Get a 10% discount on other brands you might also like" />
@@ -122,7 +129,10 @@ class ReviewModes extends React.Component{
             variant="outlined">
                 <CardContent>
                     <PhotoCameraSharpIcon style={classes.camera}/>
-                    <Divider variant="inset"/>
+                    <div style = {classes.pos1}>
+                    by Text & Image
+                    </div>
+                    <hr style = {classes.divider}/>
                     <List style={classes.root}>
                         <ListItem>
                             <CheckCircleSharpIcon style={classes.checkmarks} />
@@ -135,18 +145,12 @@ class ReviewModes extends React.Component{
           }    
     render(){
         return(
-        <Grid container
-        direction="column"
-        justify="space-around"
-        alignItems="center"
-        height='100%'>
+        <div>
             <Question n={2}/>
-            <Grid item xs={12}>
+            <Container maxWidth="xs">
                 {this.videoOpt()}
-            </Grid>
-            <Grid item xs={12}>
                 {this.imgOpt()}
-            </Grid>                                
-        </Grid>) }  
+            </Container>
+        </div>) }  
 }
 export default ReviewModes
